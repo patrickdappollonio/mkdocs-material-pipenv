@@ -26,6 +26,7 @@ RUN python3 -m ensurepip && \
   pip pipenv \
   'mkdocs-material==8.4.*' \
   'mkdocs-awesome-pages-plugin==2.8.*' \
-  'mkdocs-git-revision-date-localized-plugin==1.1.*'
+  'mkdocs-git-revision-date-localized-plugin==1.1.*' \
+  'mdx_truly_sane_lists==1.3.*'
 
 CMD ["/bin/bash"]
