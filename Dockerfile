@@ -11,6 +11,7 @@ RUN \
 
 USER docker
 WORKDIR /mkdocs
+ADD requirements.txt /mkdocs/requirements.txt
 
 # Define environment variables for Python inside the container
 ENV PATH="${PATH}:/usr/lib/python3.10/site-packages:/home/docker/.local/bin" \
@@ -23,11 +24,6 @@ ENV PATH="${PATH}:/usr/lib/python3.10/site-packages:/home/docker/.local/bin" \
 # Install pip (if it wasn't installed) and install our deps
 RUN python3 -m ensurepip && \
   python3 -m pip install --no-cache-dir --upgrade \
-  pip pipenv \
-  'mkdocs-material==8.4.*' \
-  'mkdocs-awesome-pages-plugin==2.8.*' \
-  'mkdocs-git-revision-date-localized-plugin==1.1.*' \
-  'mdx_truly_sane_lists==1.3.*' \
-  'mkdocs-glightbox==0.2.1'
+  pip pipenv install -r requirements.txt
 
 CMD ["/bin/bash"]

@@ -3,13 +3,13 @@ name: ci
 on:
   push:
     branches:
-      - 'main'
+      - "main"
   schedule:
     - cron: "0 0 * * 1"
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}-v9
 
 jobs:
   docker:
@@ -32,3 +32,8 @@ jobs:
           context: .
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+      - name: Ensure cron job keeps running
+        uses: gautamkrishnar/keepalive-workflow@v1
+        with:
+          committer_username: patrickdappollonio
+          committer_email: 930925+patrickdappollonio@users.noreply.github.com
