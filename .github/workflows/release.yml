@@ -6,6 +6,9 @@ on:
       - "main"
   schedule:
     - cron: "0 0 * * 1"
+    
+permissions:
+  contents: write
 
 env:
   REGISTRY: ghcr.io
