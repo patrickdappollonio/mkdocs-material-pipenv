@@ -1,4 +1,4 @@
-name: ci
+name: Release Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "main"
   schedule:
     - cron: "0 0 * * 1"
-    
+
 permissions:
   contents: write
   packages: write
