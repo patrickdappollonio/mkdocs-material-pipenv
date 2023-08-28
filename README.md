@@ -1,7 +1,7 @@
 # `mkdocs-material` Docker container image
 
 ```bash
-docker pull ghcr.io/patrickdappollonio/mkdocs-material-pipenv:latest
+docker pull ghcr.io/patrickdappollonio/mkdocs-material-pipenv-v9:latest
 ```
 
 This is a very biased `mkdocs-material` container image that is intended to be used as a base for a `mkdocs-material` project. It includes a handful of plugins curated by the author.
