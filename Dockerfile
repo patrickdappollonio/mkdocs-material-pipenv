@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.19
 
 # Install default apps like python, bash, sudo and git,
 # then configure bash as the default shell, then add a
@@ -6,23 +6,26 @@ FROM alpine:3.18
 RUN apk add --no-cache bash python3=~3.11 sudo git && \
   sed -i -e "s/bin\/ash/bin\/bash/" /etc/passwd && \
   adduser -D -g "docker" docker && adduser docker wheel && \
-  echo "docker ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  echo "docker ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+  mkdir -p /venv && chown -R docker:docker /venv
 
 USER docker
 WORKDIR /mkdocs
-ADD requirements.txt /mkdocs/requirements.txt
+ADD Pipfile /mkdocs/Pipfile
+ADD Pipfile.lock /mkdocs/Pipfile.lock
 
 # Define environment variables for Python inside the container
-ENV PATH="${PATH}:/usr/lib/python3.11/site-packages:/home/docker/.local/bin" \
-  PYTHONDONTWRITEBYTECODE=1 \
+ENV PYTHONDONTWRITEBYTECODE=1 \
   PYTHONUNBUFFERED=1 \
   PYTHONPATH=/usr/bin/python3 \
   HOME="/home/docker" \
-  LANG=en_US.UTF-8
+  LANG=en_US.UTF-8 \
+  PIPENV_SYSTEM=1
 
 # Install pip (if it wasn't installed) and install our deps
-RUN python3 -m ensurepip && \
-  python3 -m pip install --no-cache-dir --upgrade \
-  pip pipenv install -r requirements.txt
+RUN python3 -m venv /venv
+ENV PATH="/venv/bin:${PATH}"
+RUN pip install --no-cache-dir --upgrade pipenv && \
+  pipenv --python=/usr/bin/python3 sync
 
 CMD ["/bin/bash"]
