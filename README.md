@@ -8,15 +8,18 @@ This is a very biased `mkdocs-material` container image that is intended to be u
 
 It also includes `pipenv` in case your project might use it to define version constraints.
 
-The plugins installed and their dependencies are (see [`requirements.txt`](requirements.txt) for more information):
+The plugins installed and their dependencies are (see [`Pipfile`](Pipfile) for more information):
 
 ```bash
-mkdocs-material==9.*
-mkdocs-awesome-pages-plugin==2.9.*
-mkdocs-git-revision-date-localized-plugin==1.2.*
-mdx_truly_sane_lists==1.3
-mkdocs-glightbox==0.3.4
-mkdocs-htmlproofer-plugin==1.0.0
+mkdocs = "*"
+mkdocs-material = "==9.*"
+mkdocs-material-extensions = "*"
+pymdown-extensions = "*"
+mkdocs-glightbox = "==0.3.4"
+mdx_truly_sane_lists = "==1.3"
+mkdocs-git-revision-date-localized-plugin = "*"
+mkdocs-awesome-pages-plugin = "==2.9.*"
+mkdocs-htmlproofer-plugin = {git = "https://github.com/manuzhang/mkdocs-htmlproofer-plugin.git", editable = true, ref = "d0add3fec23339b5f74c97257510988546d12b30"}
 ```
 
 The terminal has been replaced to `bash` (in replacement of `ash`, original in Alpine), and `sudo` has been installed in case the user needs to escalate to install OS level packages. `sudo` has no password requirement, and as such, **it is not recommended to use this container as a shell for a live production environment**. You can alternatively disable the `sudo` passwordless use by expanding from this image and running:
