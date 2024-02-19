@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0016d5847ac9fa1fbc673ae763ba8361c33c54d5ed248e53e2b3d2cb30b5d430"
+            "sha256": "58324aef03dcfc790c3d5d85b8072bc3d1cf40b28233bd201c61adfff1ce00c1"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -315,11 +315,11 @@
         },
         "mkdocs-glightbox": {
             "hashes": [
-                "sha256:096c2753cf4f46f548b02070a2ff5dd8b823a431ce17873a62dcef304cf3364c",
-                "sha256:f572256cca17c912da50a045129026566a79b8c6477e1170258ccc0ac5b162da"
+                "sha256:4e890140a97dd4ad128cb92174384bd0ac33adec3304bbd2b7c48d0847685c4f",
+                "sha256:9659631a9829d93d8fb0ce3a20a10261c258605ba4dc87a3b7b5d847b93a276d"
             ],
             "index": "pypi",
-            "version": "==0.3.5"
+            "version": "==0.3.7"
         },
         "mkdocs-htmlproofer-plugin": {
             "editable": true,
