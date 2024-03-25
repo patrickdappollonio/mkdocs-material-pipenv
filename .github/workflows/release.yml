@@ -8,7 +8,7 @@ on:
     - cron: "0 0 * * 1"
 
 permissions:
-  contents: write
+  actions: write
   packages: write
 
 env:
@@ -38,7 +38,4 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Ensure cron job keeps running
-        uses: gautamkrishnar/keepalive-workflow@v1
-        with:
-          committer_username: patrickdappollonio
-          committer_email: 930925+patrickdappollonio@users.noreply.github.com
+        uses: gautamkrishnar/keepalive-workflow@v2
